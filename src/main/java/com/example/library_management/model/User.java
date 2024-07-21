@@ -24,6 +24,15 @@ public class User {
 
     private LocalDate enrollDate;
 
+    public User(){}
+
+    public User(String firstName, String lastName, String userName, String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.userName = userName;
+        this.password = password;
+    }
+
 
     @OneToMany(cascade=CascadeType.ALL, mappedBy="user")
     @JsonManagedReference
@@ -60,9 +69,7 @@ public class User {
         }
     }
 
-    public User(){
-        this.enrollDate=LocalDate.now();
-    }
+    
 
     public Long getId() {
         return id;

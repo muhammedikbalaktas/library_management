@@ -1,13 +1,16 @@
 package com.example.library_management.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cglib.core.Local;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.example.library_management.repository.UserRepository;
+import com.example.library_management.dao.UserDao;
 import com.example.library_management.model.Book;
 import com.example.library_management.model.User;
 @Service
@@ -23,7 +26,11 @@ public class UserService {
     }
 
     @Transactional
-    public User serviceCreateUser(User user){
+    public User serviceCreateUser(UserDao userDao){
+        User user=new User(userDao.firstName,userDao.lastName,userDao.userName,userDao.password);
+        user.setEnrollDate(LocalDate.now());
+        user.setBookHistory(null);
+
         return userRepository.save(user);
     }
 

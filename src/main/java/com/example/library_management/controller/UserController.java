@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.library_management.dao.UserDao;
 import com.example.library_management.model.User;
 import com.example.library_management.service.UserService;
 
@@ -32,9 +33,9 @@ public class UserController {
     }
     
     @PostMapping
-    public User controllerCreateUser(@RequestBody User user){
+    public User controllerCreateUser(@RequestBody UserDao userDao){
 
-        return userService.serviceCreateUser(user);
+        return userService.serviceCreateUser(userDao);
     }
 
     
